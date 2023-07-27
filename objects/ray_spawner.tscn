@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://10q425wtcoe2"]
+
+[ext_resource type="Script" path="res://scripts/ray_spawner.gd" id="1_per8g"]
+[ext_resource type="PackedScene" uid="uid://dmkwsbis7nba5" path="res://objects/ray.tscn" id="2_vn12d"]
+
+[node name="ray_spawner" type="Node2D"]
+script = ExtResource("1_per8g")
+ray_scene = ExtResource("2_vn12d")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

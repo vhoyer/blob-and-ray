@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://v4tvf0n7fq3o"]
+
+[ext_resource type="Script" path="res://scripts/points_display.gd" id="1_irhwk"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r5sfc"]
+font_size = 64
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[node name="points_display" type="CanvasLayer"]
+script = ExtResource("1_irhwk")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_r5sfc")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
