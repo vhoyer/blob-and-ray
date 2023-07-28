@@ -1,14 +1,12 @@
 extends Node2D
 class_name Menu
 
-@export var main: PackedScene
-
 var best_score: int = 0
 var last_score: int = 0
 
 func _on_button_pressed():
 	$CanvasLayer.visible = false
-	var scene = preload("res://scenes/main.tscn").instantiate()
+	var scene = preload("res://scenes/game.tscn").instantiate()
 	add_child(scene)
 
 func end_screen(score):
