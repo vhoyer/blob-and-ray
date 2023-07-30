@@ -1,18 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0g5o44k88t1u"]
+[gd_scene load_steps=5 format=3 uid="uid://dwx53yk232kv1"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_wb61a"]
-[ext_resource type="PackedScene" uid="uid://10q425wtcoe2" path="res://objects/ray_spawner.tscn" id="2_mv16a"]
-[ext_resource type="PackedScene" uid="uid://dawxw7rhoelqg" path="res://objects/player.tscn" id="3_loqc5"]
-[ext_resource type="PackedScene" uid="uid://v4tvf0n7fq3o" path="res://objects/points_display.tscn" id="4_w0vdt"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_u7baw"]
+[ext_resource type="PackedScene" uid="uid://dawxw7rhoelqg" path="res://objects/player.tscn" id="2_tqcrf"]
+[ext_resource type="PackedScene" uid="uid://10q425wtcoe2" path="res://objects/ray_spawner.tscn" id="2_x5blg"]
+[ext_resource type="PackedScene" uid="uid://v4tvf0n7fq3o" path="res://objects/points_display.tscn" id="4_6nanl"]
 
 [node name="game" type="Node2D"]
-script = ExtResource("1_wb61a")
+script = ExtResource("1_u7baw")
 
-[node name="ray_spawner" parent="." instance=ExtResource("2_mv16a")]
+[node name="ray_spawner" parent="." instance=ExtResource("2_x5blg")]
 
-[node name="Player" parent="." instance=ExtResource("3_loqc5")]
+[node name="Player" parent="." instance=ExtResource("2_tqcrf")]
 position = Vector2(256, 256)
 
-[node name="points_display" parent="." instance=ExtResource("4_w0vdt")]
+[node name="points_display" parent="." instance=ExtResource("4_6nanl")]
 
 [connection signal="game_over" from="Player" to="." method="_on_player_game_over"]
