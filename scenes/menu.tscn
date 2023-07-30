@@ -19,24 +19,15 @@ offset_right = 0.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 32
 
 [node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 text = "Blob and Ray"
 
-[node name="Label2" type="Label" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-text = "
-"
-
 [node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
 text = "start"
-
-[node name="Label3" type="Label" parent="CanvasLayer/VBoxContainer"]
-layout_mode = 2
-text = "
-"
 
 [node name="scores" type="Label" parent="CanvasLayer/VBoxContainer"]
 layout_mode = 2
