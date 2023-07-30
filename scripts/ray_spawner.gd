@@ -4,48 +4,69 @@ class_name RaySpawner
 @export var ray_scene: PackedScene
 var axis_dict = { 'x': [], 'y': [] }
 
+@onready var timer = $Timer
+
 func stop_spawn():
-	$Timer.stop()
+	timer.stop()
 
 func _ready():
 	_on_timer_timeout()
 
+func inverse_axis(axis):
+	return 'x' if axis == 'y' else 'y'
+
 func _on_timer_timeout():
-	var timer = $Timer
 	timer.wait_time = max(0.5, timer.wait_time - 0.5)
 	
 	var ray = ray_scene.instantiate() as Ray
-	var is_vertical = randf() > 0.5
-	var axis = 'x' if is_vertical else 'y'
-	var axis_offset = 0 if axis == 'x' else 1
 	
 	var ray_size = ray.get_rect()
 	var screen = get_viewport_rect()
 	
-	var max = screen.size[axis] / ray_size.x
-	var step = screen.size[axis] / max
-	var index = get_available_index(axis, max)
-	ray.global_position[axis] = step * (index + axis_offset)
+	# the screen is square, so any axis is fine
+	# the ray will always be positioned vertically, so only the x matters
+	var max_index = screen.size.x / ray_size.x
+	var step = screen.size.x / max_index
 	
-	if (axis == 'y'):
+	var spawn = get_available_index(max_index)
+	
+	var axis_offset = 0 if spawn.axis == 'x' else 1
+	ray.global_position[spawn.axis] = step * (spawn.index + axis_offset)
+	
+	if (spawn.axis == 'y'):
 		ray.global_rotation_degrees = -90.0
-		pass
 	
 	ray.connect("finished", ray_end)
-	ray.start(index, axis)
-	axis_dict[axis].append(index)
+	ray.start(spawn.index, spawn.axis)
+	axis_dict[spawn.axis].append(spawn.index)
+	
+	print_debug(max_index, spawn.axis, spawn.index)
 	
 	add_child(ray)
+	move_child(ray, 0)
 
-func get_available_index(axis, max):
-	var candidates = range(0, max)
+func get_available_index(max_index):
+	var candidates = range(0, max_index)
 	candidates.shuffle()
 	
-	for i in candidates:
-		if (axis_dict[axis].has(i)): continue
-		return i
-	return -1;
+	var axis_list = ['x', 'y']
+	axis_list.shuffle()
+	
+	for axis in axis_list:
+		for index in candidates:
+			if (!axis_dict[axis].has(index)):
+				return SpawnLocation.new(index, axis)
+	
+	push_error("fuck, no index avaiable")
+	return
 
 func ray_end(ray, axis, index):
 	axis_dict[axis].erase(index)
 	remove_child(ray)
+
+class SpawnLocation:
+	var index: int;
+	var axis: String;
+	func _init(indexP, axisP):
+		self.index = indexP
+		self.axis = axisP
