@@ -40,9 +40,8 @@ func _on_timer_timeout():
 	ray.start(spawn.index, spawn.axis)
 	axis_dict[spawn.axis].append(spawn.index)
 	
-	print_debug(max_index, spawn.axis, spawn.index)
-	
 	add_child(ray)
+	# make old children appear on top (not layering the flash part of the animation)
 	move_child(ray, 0)
 
 func get_available_index(max_index):
