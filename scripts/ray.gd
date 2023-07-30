@@ -19,7 +19,7 @@ func get_rect():
 	
 	return size
 
-func _on_animator_animation_finished(anim_name):
+func _on_animator_animation_finished(_anim_name):
 	finished.emit(self, axis, index)
 
 

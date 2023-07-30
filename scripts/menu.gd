@@ -17,7 +17,7 @@ func end_screen(score):
 	
 	loaded_scene.call_deferred("free")
 
-func _process(delta):
+func _process(_delta):
 	game_restart()
 	score_update()
 

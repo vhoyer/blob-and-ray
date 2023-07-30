@@ -3,7 +3,7 @@ class_name Points
 
 var points = 0
 
-func _process(delta):
+func _process(_delta):
 	$Label.text = str(points)
 
 func _on_timer_timeout():
