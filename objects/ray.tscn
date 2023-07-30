@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dmkwsbis7nba5"]
+[gd_scene load_steps=8 format=3 uid="uid://dmkwsbis7nba5"]
 
 [ext_resource type="Script" path="res://scripts/ray.gd" id="1_7uw1g"]
 [ext_resource type="Texture2D" uid="uid://cdg5sbnu8bixr" path="res://sprite/ray.png" id="1_uxq4p"]
+[ext_resource type="AudioStream" uid="uid://cjppnow8p8q3o" path="res://audio/chiptune-floortom.wav" id="3_52ieq"]
 
 [sub_resource type="Animation" id="Animation_avaxr"]
 length = 3.0
@@ -30,6 +31,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_6vbpq"]
 resource_name = "ray"
@@ -54,10 +67,22 @@ tracks/1/path = NodePath(".:monitoring")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.5, 2.6),
+"times": PackedFloat32Array(0, 2.5, 2.65),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.5),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0qfbv"]
@@ -90,6 +115,9 @@ hframes = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(65, 256)
 shape = SubResource("RectangleShape2D_xeewo")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_52ieq")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Animator" to="." method="_on_animator_animation_finished"]
