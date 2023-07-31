@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bq6lbfs0n1xdh"
+path="res://.godot/imported/blob-and-ray-bgm - beat.wav-982d33aab9ccae37f2ea7e065b129df8.sample"
+
+[deps]
+
+source_file="res://audio/blob-and-ray-bgm - beat.wav"
+dest_files=["res://.godot/imported/blob-and-ray-bgm - beat.wav-982d33aab9ccae37f2ea7e065b129df8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
