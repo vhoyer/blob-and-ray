@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://m33y8eft4ojm"]
+
+[ext_resource type="Script" path="res://modules/Maestrinho/MaestrinhoTrigger.gd" id="1_ayio4"]
+
+[node name="MaestroTrigger" type="Node"]
+script = ExtResource("1_ayio4")

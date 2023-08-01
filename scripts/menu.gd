@@ -7,6 +7,9 @@ var last_score: int = 0
 @onready var canvas = $CanvasLayer
 var loaded_scene;
 
+func _ready():
+	Maestrinho.play_loop("bgm")
+
 func _on_button_pressed():
 	game_start()
 

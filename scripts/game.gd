@@ -5,6 +5,10 @@ extends Node2D
 
 signal end_game
 
+func _ready():
+	Maestrinho.play_loop("bgm")
+	pass
+
 func _on_player_game_over():
 	ray_spawner.stop_spawn()
 	var score = points.stop_and_return()

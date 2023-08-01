@@ -10,14 +10,16 @@ func stop_spawn():
 	timer.stop()
 
 func _ready():
-	_on_timer_timeout()
+	spawn_ray()
 
 func inverse_axis(axis):
 	return 'x' if axis == 'y' else 'y'
 
 func _on_timer_timeout():
 	timer.wait_time = max(0.5, timer.wait_time - 0.5)
-	
+	spawn_ray()
+
+func spawn_ray():
 	var ray = ray_scene.instantiate() as Ray
 	
 	var ray_size = ray.get_rect()
@@ -43,6 +45,7 @@ func _on_timer_timeout():
 	add_child(ray)
 	# make old children appear on top (not layering the flash part of the animation)
 	move_child(ray, 0)
+	
 
 func get_available_index(max_index):
 	var candidates = range(0, max_index)

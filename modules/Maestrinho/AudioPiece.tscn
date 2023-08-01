@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4fxlhg3cf5l5"]
+
+[ext_resource type="Script" path="res://modules/Maestrinho/AudioPiece.gd" id="1_snogs"]
+
+[node name="AudioPiece" type="AudioStreamPlayer"]
+script = ExtResource("1_snogs")

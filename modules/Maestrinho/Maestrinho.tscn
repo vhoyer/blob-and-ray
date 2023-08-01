@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4xb76qfob3no"]
+
+[ext_resource type="Script" path="res://modules/Maestrinho/Maestrinho.gd" id="1_ur68f"]
+[ext_resource type="PackedScene" uid="uid://c4fxlhg3cf5l5" path="res://modules/Maestrinho/AudioPiece.tscn" id="2_1vogf"]
+[ext_resource type="AudioStream" uid="uid://cjppnow8p8q3o" path="res://audio/chiptune-floortom.wav" id="3_6qr6t"]
+[ext_resource type="AudioStream" uid="uid://bq6lbfs0n1xdh" path="res://audio/blob-and-ray-bgm - beat.wav" id="4_me5ta"]
+
+[node name="Maestro" type="Node"]
+script = ExtResource("1_ur68f")
+
+[node name="trigger" type="Node" parent="."]
+
+[node name="ray" parent="trigger" instance=ExtResource("2_1vogf")]
+stream = ExtResource("3_6qr6t")
+volume_db = 4.685
+
+[node name="loop" type="Node" parent="."]
+
+[node name="bgm" parent="loop" instance=ExtResource("2_1vogf")]
+stream = ExtResource("4_me5ta")
+volume_db = -3.748
