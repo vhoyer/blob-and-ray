@@ -2,7 +2,7 @@ extends Control
 
 var start: Vector2
 var end: Vector2
-var deadzone_radius: int = 20
+var deadzone_radius: int = 30
 ## useful only for touch emulation
 var is_dragging: bool
 
