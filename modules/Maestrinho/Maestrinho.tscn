@@ -12,10 +12,10 @@ script = ExtResource("1_ur68f")
 
 [node name="ray" parent="trigger" instance=ExtResource("2_1vogf")]
 stream = ExtResource("3_6qr6t")
-volume_db = 4.685
+volume_db = 10.307
 
 [node name="loop" type="Node" parent="."]
 
 [node name="bgm" parent="loop" instance=ExtResource("2_1vogf")]
 stream = ExtResource("4_me5ta")
-volume_db = -3.748
+volume_db = -11.244
